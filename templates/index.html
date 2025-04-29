@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Live Music Events</title>
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                {{ event.title }} on {{ event.date }} at {{ event.time }}
+                <form action="/vote/{{ event.event_id }}" method="POST">
+                    <button type="submit">I'm Going!</button>
+                </form>
+                Votes: {{ event.votes }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
